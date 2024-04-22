@@ -39,6 +39,8 @@
     background-size: cover;
     background-position: center;
     height: 100vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .navbar {
@@ -98,9 +100,13 @@
                         <li class="nav-item">
                             <a href="#home" class="nav-link" style="color: black;font-weight: bold;font-size: 16px;">Home</a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="#registration" class="nav-link" style="color: black;=font-size: 16px;">Registration</a>
+                            <a href="{{ route('registration') }}" class="nav-link" style="color: black; font-size: 16px;">Registration</a>
                         </li>
+                        {{-- <li class="nav-item">
+                            <a href="{{ route('registration') }}" class="nav-link" style="color: black;=font-size: 16px;">Registration</a>
+                        </li> --}}
                         <li class="nav-item">
                             <a href="#result" class="nav-link" style="color: black;=font-size: 16px;">Result</a>
                         </li>
