@@ -18,9 +18,13 @@
         }
 
         body {
-            background:  url('{{ asset('frontend/assets/images/bg.jpg') }}') no-repeat center center fixed;
-            background-size: cover;
+            background:  url('{{ asset('frontend/assets/images/registration.png') }}') no-repeat center center fixed;
+          
+            /* background:  url('{{ asset('frontend/assets/images/bg.jpg') }}') no-repeat center center fixed; */
             /* padding: 0 10px; */
+            /* background: url('{{ asset('frontend/assets/images/registration2.png') }}') no-repeat center center; */
+            /* background-size: contain; */
+            background-size: cover;
         }
 
         .wrapper {

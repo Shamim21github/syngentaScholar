@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\RegistrationsController;
 
+// use App\Http\Controllers\Auth\RegisterController;
+// use App\Http\Controllers\Auth\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +19,7 @@ use App\Http\Controllers\Backend\RegistrationsController;
 
 Route::get('/', function () {
     return view('frontend.pages.home');
-});
+})->name('home');
 
 Route::get('/registrationform', function () {
     return view('frontend.pages.registrationform');
@@ -35,3 +37,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+Route::get('/result', function () {
+    return view('frontend.pages.result');
+})->name('result');
+
