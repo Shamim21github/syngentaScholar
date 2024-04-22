@@ -35,7 +35,9 @@
         <style>
          .home-bg {
     position: relative;
-    background-image: url('{{ asset('frontend/assets/images/bg.jpg') }}');
+    background-image: url('{{ asset('frontend/assets/images/bg4.jpg') }}');
+    /* background-image: url('{{ asset('frontend/assets/images/bg.jpg') }}'); */
+    /* background-image: url('{{ asset('frontend/assets/images/WEB-PAGE.png') }}'); */
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -108,7 +110,7 @@
                             <a href="{{ route('registration') }}" class="nav-link" style="color: black;=font-size: 16px;">Registration</a>
                         </li> --}}
                         <li class="nav-item">
-                            <a href="#result" class="nav-link" style="color: black;=font-size: 16px;">Result</a>
+                            <a href="{{ route('result') }}" class="nav-link" style="color: black;=font-size: 16px;">Result</a>
                         </li>
                         <li class="nav-item">
                             <a href="#contact" class="nav-link" style="color: black;font-size: 16px;">Contact</a>
