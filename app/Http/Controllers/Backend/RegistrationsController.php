@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Registration;
 use Illuminate\Http\Request;
 
 class RegistrationsController extends Controller
@@ -12,7 +13,8 @@ class RegistrationsController extends Controller
      */
     public function index()
     {
-       return view('backend.pages.registrationslist');
+        $registration_lists = Registration::orderBy('id', 'DESC')->get();
+        return view('backend.pages.registrationslist', get_defined_vars());
     }
 
     /**
@@ -28,7 +30,7 @@ class RegistrationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->all();
     }
 
     /**
