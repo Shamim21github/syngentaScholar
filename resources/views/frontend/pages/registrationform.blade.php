@@ -18,7 +18,7 @@
         }
 
         body {
-            background: url('{{ asset(' frontend/assets/images/registration.png') }}') no-repeat center center fixed;
+            background: url('{{ asset('frontend/assets/images/registration.png') }}') no-repeat center center fixed;
 
             /* background:  url('{{ asset('frontend/assets/images/bg.jpg') }}') no-repeat center center fixed; */
             /* padding: 0 10px; */

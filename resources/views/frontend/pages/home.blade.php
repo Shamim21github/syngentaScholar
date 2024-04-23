@@ -36,7 +36,7 @@
     <style>
         .home-bg {
             position: relative;
-            background-image: url('{{ asset(' frontend/assets/images/bg4.jpg') }}');
+            background-image: url('{{ asset('frontend/assets/images/bg4.jpg') }}');
             /* background-image: url('{{ asset('frontend/assets/images/bg.jpg') }}'); */
             /* background-image: url('{{ asset('frontend/assets/images/WEB-PAGE.png') }}'); */
             background-size: cover;
