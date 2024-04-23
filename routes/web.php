@@ -29,6 +29,10 @@ Route::get('/result', function () {
     return view('frontend.pages.result');
 })->name('result');
 
+Route::get('/contact', function () {
+    return view('frontend.pages.contact');
+})->name('contact');
+
 
 Route::resource('student-registrations', StudentRegistrationController::class);
 Route::get('/dashboard', function () {

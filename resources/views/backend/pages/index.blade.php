@@ -14,11 +14,11 @@
       <div class="row">
 
         <!-- Left side columns -->
-        <div class="col-lg-8">
+        <div class="col-lg-12">
           <div class="row">
 
-            <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-6">
+            <!-- university Card -->
+            <div class="col-xxl-6 col-md-6">
               <div class="card info-card sales-card">
 
                 <div class="filter">
@@ -35,15 +35,15 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Sales <span>| Today</span></h5>
+                  <h5 class="card-title">Bangladesh Agricultural University  <span>| Total</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-cart"></i>
+                      <i class="bi bi-building"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                      <h6>07</h6>
+                      {{-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> --}}
 
                     </div>
                   </div>
@@ -52,8 +52,8 @@
               </div>
             </div><!-- End Sales Card -->
 
-            <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-6">
+            <!-- student Card -->
+            <div class="col-xxl-6 col-md-6">
               <div class="card info-card revenue-card">
 
                 <div class="filter">
@@ -70,15 +70,15 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Revenue <span>| This Month</span></h5>
+                  <h5 class="card-title">Students List <span>| Total</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-currency-dollar"></i>
+                      <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>$3,264</h6>
-                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                      <h6>8800</h6>
+                      {{-- <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span> --}}
 
                     </div>
                   </div>
@@ -88,7 +88,7 @@
             </div><!-- End Revenue Card -->
 
             <!-- Customers Card -->
-            <div class="col-xxl-4 col-xl-12">
+            {{-- <div class="col-xxl-4 col-xl-12">
 
               <div class="card info-card customers-card">
 
@@ -122,7 +122,7 @@
                 </div>
               </div>
 
-            </div><!-- End Customers Card -->
+            </div><!-- End Customers Card --> --}}
 
             <!-- Reports -->
             <div class="col-12">
@@ -142,7 +142,7 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Reports <span>/Today</span></h5>
+                  <h5 class="card-title">Reports <span>/ Yearly</span></h5>
 
                   <!-- Line Chart -->
                   <div id="reportsChart"></div>
@@ -151,13 +151,13 @@
                     document.addEventListener("DOMContentLoaded", () => {
                       new ApexCharts(document.querySelector("#reportsChart"), {
                         series: [{
-                          name: 'Sales',
+                          name: '2022',
                           data: [31, 40, 28, 51, 42, 82, 56],
                         }, {
-                          name: 'Revenue',
+                          name: '2023',
                           data: [11, 32, 45, 32, 34, 52, 41]
                         }, {
-                          name: 'Customers',
+                          name: '2024',
                           data: [15, 11, 32, 18, 9, 24, 11]
                         }],
                         chart: {
@@ -207,7 +207,7 @@
             </div><!-- End Reports -->
 
             <!-- Recent Sales -->
-            <div class="col-12">
+            {{-- <div class="col-12">
               <div class="card recent-sales overflow-auto">
 
                 <div class="filter">
@@ -278,10 +278,10 @@
                 </div>
 
               </div>
-            </div><!-- End Recent Sales -->
+            </div><!-- End Recent Sales --> --}}
 
             <!-- Top Selling -->
-            <div class="col-12">
+            {{-- <div class="col-12">
               <div class="card top-selling overflow-auto">
 
                 <div class="filter">
@@ -352,16 +352,16 @@
                 </div>
 
               </div>
-            </div><!-- End Top Selling -->
+            </div><!-- End Top Selling --> --}}
 
           </div>
         </div><!-- End Left side columns -->
 
         <!-- Right side columns -->
-        <div class="col-lg-4">
+        <div class="col-lg-12">
 
           <!-- Recent Activity -->
-          <div class="card">
+          {{-- <div class="card">
             <div class="filter">
               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -431,10 +431,10 @@
               </div>
 
             </div>
-          </div><!-- End Recent Activity -->
+          </div><!-- End Recent Activity --> --}}
 
           <!-- Budget Report -->
-          <div class="card">
+          {{-- <div class="card">
             <div class="filter">
               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -505,7 +505,7 @@
               </script>
 
             </div>
-          </div><!-- End Budget Report -->
+          </div><!-- End Budget Report --> --}}
 
           <!-- Website Traffic -->
           <div class="card">
@@ -523,7 +523,7 @@
             </div>
 
             <div class="card-body pb-0">
-              <h5 class="card-title">Website Traffic <span>| Today</span></h5>
+              <h5 class="card-title">Area wise Student <span>| Today</span></h5>
 
               <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
 
@@ -538,7 +538,7 @@
                       left: 'center'
                     },
                     series: [{
-                      name: 'Access From',
+                      name: 'Students Number',
                       type: 'pie',
                       radius: ['40%', '70%'],
                       avoidLabelOverlap: false,
@@ -558,23 +558,23 @@
                       },
                       data: [{
                           value: 1048,
-                          name: 'Search Engine'
+                          name: 'Dhaka Zone'
                         },
                         {
                           value: 735,
-                          name: 'Direct'
+                          name: 'Chattagram Zone'
                         },
                         {
                           value: 580,
-                          name: 'Email'
+                          name: 'Khulna Zone'
                         },
                         {
                           value: 484,
-                          name: 'Union Ads'
+                          name: 'Rajshahi Zone'
                         },
                         {
                           value: 300,
-                          name: 'Video Ads'
+                          name: 'Barishal Zone'
                         }
                       ]
                     }]
@@ -586,7 +586,7 @@
           </div><!-- End Website Traffic -->
 
           <!-- News & Updates Traffic -->
-          <div class="card">
+          {{-- <div class="card">
             <div class="filter">
               <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -637,7 +637,7 @@
               </div><!-- End sidebar recent posts-->
 
             </div>
-          </div><!-- End News & Updates -->
+          </div><!-- End News & Updates --> --}}
 
         </div><!-- End Right side columns -->
 
