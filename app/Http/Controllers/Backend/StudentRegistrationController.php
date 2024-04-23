@@ -3,18 +3,17 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Registration;
 use Illuminate\Http\Request;
+use App\Models\Registration;
 
-class RegistrationsController extends Controller
+class StudentRegistrationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $registration_lists = Registration::orderBy('id', 'DESC')->get();
-        return view('backend.pages.registrationslist', get_defined_vars());
+        //
     }
 
     /**

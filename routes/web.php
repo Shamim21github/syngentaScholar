@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\RegistrationsController;
+use App\Http\Controllers\Backend\StudentRegistrationController;
 
 // use App\Http\Controllers\Auth\RegisterController;
 // use App\Http\Controllers\Auth\LoginController;
@@ -24,7 +25,12 @@ Route::get('/', function () {
 Route::get('/registrationform', function () {
     return view('frontend.pages.registrationform');
 })->name('registration');
+Route::get('/result', function () {
+    return view('frontend.pages.result');
+})->name('result');
 
+
+Route::resource('student-registrations', StudentRegistrationController::class);
 Route::get('/dashboard', function () {
     return view('backend.pages.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -36,8 +42,4 @@ Route::middleware('auth')->group(function () {
     Route::resource('registrations', RegistrationsController::class);
 });
 
-require __DIR__.'/auth.php';
-Route::get('/result', function () {
-    return view('frontend.pages.result');
-})->name('result');
-
+require __DIR__ . '/auth.php';

@@ -217,12 +217,12 @@
         <div class="title">
             Registration Form
         </div>
-        <form action="{{route('registrations.store')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('student-registrations.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form">
                 <div class="form">
                     <div class="inputfield">
-                        <label>Application's Name: *</label>
+                        <label>Applicants Name: *</label>
                         <input type="text" class="input" name="application_name" value="{{ old('application_name') }}" required>
                         @error('application_name')
                         <span class="text-danger">{{ $message }}</span>
@@ -258,10 +258,16 @@
                     </div>
                     <div class="inputfield">
                         <label>Semester: *</label>
-                        <input type="text" class="input" name="semester" value="{{ old('semester') }}" required>
-                        @error('semester')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
+                        <div class="custom_select">
+                            <select name="semester" id="semester" required>
+                                <option value="">Select</option>
+                                <option value="8thsemester" {{ old('8thsemester') == '8thsemester' ? 'selected' : '' }}>8th semester</option>
+                                <option value="7thsemester" {{ old('7thsemester') == '7thsemester' ? 'selected' : '' }}>7th semester</option>
+                            </select>
+                            @error('semester')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
                     <div class="inputfield">
                         <label>Gender: *</label>
@@ -313,22 +319,16 @@
                         @enderror
                     </div>
                     <div class="inputfield">
-                        <label>District: *</label>
-                        <input type="text" class="input" name="district" value="{{ old('district') }}" required>
-                        @error('district')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="inputfield">
                         <label>How do you know Syngenta? *</label>
-                        <input type="text" class="input" name="syngenta_knowledge" value="{{ old('syngenta_knowledge') }}" required>
+                        <textarea id="syngentaTextarea" class="input" name="syngenta_knowledge" required>{{ old('syngenta_knowledge') }}</textarea>
+                        <!-- <span id="wordCount" class="text-muted">0 words</span> -->
                         @error('syngenta_knowledge')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="inputfield">
                         <label>What is your career ambition? *</label>
-                        <input type="text" class="input" name="career_ambition" value="{{ old('career_ambition') }}" required>
+                        <input id="careerAmbitionInput" type="text" class="input" name="career_ambition" value="{{ old('career_ambition') }}" required>
                         @error('career_ambition')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -349,42 +349,102 @@
                     </div>
                     <div class="inputfield">
                         <label>Applicant's NID: *</label>
-                        <input type="file" accept="image/*" name="applicant_nid" value="{{ old('applicant_nid') }}" required>
-                        @error('applicant_nid')
+                        <label for="">Front Side</label>
+                        <input type="file" accept="image/*" name="applicant_nid_front_side" value="{{ old('applicant_nid_front_side') }}" required>
+                        @error('applicant_nid_front_side')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                        <label for="">Back Side</label>
+                        <input type="file" accept="image/*" name="applicant_nid_back_side" value="{{ old('applicant_nid_back_side') }}" required>
+                        @error('applicant_nid_back_side')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="inputfield">
-                        <label>Academic Performance: 5th Semester *</label>
-                        <input type="file" accept="application/pdf" name="academic_performance_5th" value="{{ old('academic_performance_5th') }}" required>
-                        @error('academic_performance_5th')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="inputfield">
-                        <label>Academic Performance: 6th Semester *</label>
-                        <input type="file" accept="application/pdf" name="academic_performance_6th" value="{{ old('academic_performance_6th') }}" required>
-                        @error('academic_performance_6th')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="inputfield">
-                        <label>Upload Docs: *</label>
-                        <input type="file" multiple name="upload_docs" value="{{ old('upload_docs') }}" required>
-                        @error('upload_docs')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
+                    <span id="inputFieldsContainer"></span>
                     <!-- End of Integrated New Form Design -->
 
                     <div class="inputfield">
-                        <input type="submit" value="Register" class="btn">
+                        <input type="submit" value="Submit" class="btn">
                     </div>
                 </div>
             </div>
         </form>
     </div>
+    <script>
+        document.getElementById("semester").addEventListener("change", function() {
+            var selectedSemester = this.value;
+            var inputFieldsContainer = document.getElementById("inputFieldsContainer");
+            inputFieldsContainer.innerHTML = ""; // Clear previous content
 
+            if (selectedSemester === "8thsemester") {
+                inputFieldsContainer.innerHTML = `
+                <div class="inputfield">
+                    <label>Academic Performance: 8th Semester *</label>
+                    <label> 7th Semester</label>
+                    <input type="file" accept="application/pdf" name="academic_performance_7th_for_8th" value="{{ old('academic_performance_7th_for_8th') }}" required>
+                    @error('academic_performance_7th_for_8th')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                    <label> 6th Semester</label>
+                    <input type="file" accept="application/pdf" name="academic_performance_6th_for_8th" value="{{ old('academic_performance_6th_for_8th') }}" required>
+                    @error('academic_performance_6th_for_8th')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>`;
+            } else if (selectedSemester === "7thsemester") {
+                inputFieldsContainer.innerHTML = `
+                <div class="inputfield">
+                    <label>Academic Performance: 7th Semester *</label>
+                    <label for=""> 6th Semester</label>
+                    <input type="file" accept="application/pdf" name="academic_performance_6th_for_7th" value="{{ old('academic_performance_6th_for_7th') }}" required>
+                    @error('academic_performance_6th_for_7th')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                    <label for=""> 5th Semester</label>
+                    <input type="file" accept="application/pdf" name="academic_performance_5th_for_7th" value="{{ old('academic_performance_5th_for_7th') }}" required>
+                    @error('academic_performance_5th_for_7th')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>`;
+            }
+        });
+        // Get the textarea element by its id
+        var textarea = document.getElementById('syngentaTextarea');
+
+        // Add event listener for input events
+        textarea.addEventListener('input', function() {
+            // Get the current length of the textarea value
+            var charCount = this.value.length;
+
+            // Check if character limit exceeds 250
+            if (charCount > 250) {
+                // Trim the excess characters
+                var trimmedValue = this.value.slice(0, 250);
+                // Update the textarea value
+                this.value = trimmedValue;
+                // Disable the textarea
+                this.disabled = true;
+            }
+        });
+        // Get the input element by its id
+        var inputField = document.getElementById('careerAmbitionInput');
+
+        // Add event listener for input events
+        inputField.addEventListener('input', function() {
+            // Get the current length of the input value
+            var charCount = this.value.length;
+
+            // Check if character limit exceeds 250
+            if (charCount > 250) {
+                // Trim the excess characters
+                var trimmedValue = this.value.slice(0, 250);
+                // Update the input value
+                this.value = trimmedValue;
+                // Disable the input field
+                this.disabled = true;
+            }
+        });
+    </script>
 
 </body>
 
