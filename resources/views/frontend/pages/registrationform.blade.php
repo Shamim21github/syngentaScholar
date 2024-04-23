@@ -18,8 +18,8 @@
         }
 
         body {
-            background:  url('{{ asset('frontend/assets/images/registration.png') }}') no-repeat center center fixed;
-          
+            background: url('{{ asset(' frontend/assets/images/registration.png') }}') no-repeat center center fixed;
+
             /* background:  url('{{ asset('frontend/assets/images/bg.jpg') }}') no-repeat center center fixed; */
             /* padding: 0 10px; */
             /* background: url('{{ asset('frontend/assets/images/registration2.png') }}') no-repeat center center; */
@@ -139,7 +139,7 @@
             left: 0;
             opacity: 0;
         }
-        
+
 
         .wrapper .form .inputfield .check .checkmark {
             width: 15px;
@@ -214,119 +214,109 @@
         <div class="title">
             Registration Form
         </div>
-
-        <div class="form">
+        <form action="{{route('registrations.store')}}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="form">
-                <div class="inputfield">
-                    <label>Application's Name: *</label>
-                    <input type="text" class="input" name="application_name" value="{{ old('application_name') }}"
-                        required>
-                </div>
-                <div class="inputfield">
-                    <label>Name of the Institution: *</label>
-                    <input type="text" class="input" name="institution_name" value="{{ old('institution_name') }}"
-                        required>
-                </div>
-                <div class="inputfield">
-                    <label>Department/Faculty: *</label>
-                    <input type="text" class="input" name="department" value="{{ old('department') }}" required>
-                </div>
-                <div class="inputfield">
-                    <label>Roll No: *</label>
-                    <input type="text" class="input" name="roll_no" value="{{ old('roll_no') }}" required>
-                </div>
-                <div class="inputfield">
-                    <label>Session: *</label>
-                    <input type="text" class="input" name="session" value="{{ old('session') }}" required>
-                </div>
-                <div class="inputfield">
-                    <label>Semester: *</label>
-                    <input type="text" class="input" name="semester" value="{{ old('semester') }}" required>
-                </div>
-                <div class="inputfield">
-                    <label>Gender: *</label>
-                    <div class="custom_select">
-                        <select name="gender" required>
-                            <option value="">Select</option>
-                            <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
-                            <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
-                            <option value="other" {{ old('gender') == 'other' ? 'selected' : '' }}>Other</option>
-                        </select>
+                <div class="form">
+                    <div class="inputfield">
+                        <label>Application's Name: *</label>
+                        <input type="text" class="input" name="application_name" value="{{ old('application_name') }}" required>
+                    </div>
+                    <div class="inputfield">
+                        <label>Name of the Institution: *</label>
+                        <input type="text" class="input" name="institution_name" value="{{ old('institution_name') }}" required>
+                    </div>
+                    <div class="inputfield">
+                        <label>Department/Faculty: *</label>
+                        <input type="text" class="input" name="department" value="{{ old('department') }}" required>
+                    </div>
+                    <div class="inputfield">
+                        <label>Roll No: *</label>
+                        <input type="text" class="input" name="roll_no" value="{{ old('roll_no') }}" required>
+                    </div>
+                    <div class="inputfield">
+                        <label>Session: *</label>
+                        <input type="text" class="input" name="session" value="{{ old('session') }}" required>
+                    </div>
+                    <div class="inputfield">
+                        <label>Semester: *</label>
+                        <input type="text" class="input" name="semester" value="{{ old('semester') }}" required>
+                    </div>
+                    <div class="inputfield">
+                        <label>Gender: *</label>
+                        <div class="custom_select">
+                            <select name="gender" required>
+                                <option value="">Select</option>
+                                <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
+                                <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
+                                <option value="other" {{ old('gender') == 'other' ? 'selected' : '' }}>Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="inputfield">
+                        <label>Date of Birth: *</label>
+                        <input type="date" class="input" name="date_of_birth" value="{{ old('date_of_birth') }}" required>
+                    </div>
+                    <div class="inputfield">
+                        <label>Contact Number: *</label>
+                        <input type="tel" class="input" name="contact_number" value="{{ old('contact_number') }}" required>
+                    </div>
+                    <div class="inputfield">
+                        <label>Email: *</label>
+                        <input type="email" class="input" name="email" value="{{ old('email') }}" required>
+                    </div>
+                    <div class="inputfield">
+                        <label>Mailing Address: *</label>
+                        <textarea class="textarea" name="mailing_address" required>{{ old('mailing_address') }}</textarea>
+                    </div>
+                    <div class="inputfield">
+                        <label>Bkash Number: *</label>
+                        <input type="text" class="input" name="bkash_number" value="{{ old('bkash_number') }}" required>
+                    </div>
+                    <div class="inputfield">
+                        <label>District: *</label>
+                        <input type="text" class="input" name="district" value="{{ old('district') }}" required>
+                    </div>
+                    <div class="inputfield">
+                        <label>How do you know Syngenta? *</label>
+                        <input type="text" class="input" name="syngenta_knowledge" value="{{ old('syngenta_knowledge') }}" required>
+                    </div>
+                    <div class="inputfield">
+                        <label>What is your career ambition? *</label>
+                        <input type="text" class="input" name="career_ambition" value="{{ old('career_ambition') }}" required>
+                    </div>
+                    <div class="inputfield">
+                        <label>Applicant's Photo: *</label>
+                        <input type="file" accept="image/*" name="applicant_photo" value="{{ old('applicant_photo') }}" required>
+                    </div>
+                    <div class="inputfield">
+                        <label>Student ID: *</label>
+                        <input type="file" accept="image/*" name="student_id" value="{{ old('student_id') }}" required>
+                    </div>
+                    <div class="inputfield">
+                        <label>Applicant's NID: *</label>
+                        <input type="file" accept="image/*" name="applicant_nid" value="{{ old('applicant_nid') }}" required>
+                    </div>
+                    <div class="inputfield">
+                        <label>Academic Performance: 5th Semester *</label>
+                        <input type="file" accept="application/pdf" name="academic_performance_5th" value="{{ old('academic_performance_5th') }}" required>
+                    </div>
+                    <div class="inputfield">
+                        <label>Academic Performance: 6th Semester *</label>
+                        <input type="file" accept="application/pdf" name="academic_performance_6th" value="{{ old('academic_performance_6th') }}" required>
+                    </div>
+                    <div class="inputfield">
+                        <label>Upload Docs: *</label>
+                        <input type="file" multiple name="upload_docs" value="{{ old('upload_docs') }}" required>
+                    </div>
+                    <!-- End of Integrated New Form Design -->
+
+                    <div class="inputfield">
+                        <input type="submit" value="Register" class="btn">
                     </div>
                 </div>
-                <div class="inputfield">
-                    <label>Date of Birth: *</label>
-                    <input type="date" class="input" name="date_of_birth" value="{{ old('date_of_birth') }}"
-                        required>
-                </div>
-                <div class="inputfield">
-                    <label>Contact Number: *</label>
-                    <input type="tel" class="input" name="contact_number" value="{{ old('contact_number') }}"
-                        required>
-                </div>
-                <div class="inputfield">
-                    <label>Email: *</label>
-                    <input type="email" class="input" name="email" value="{{ old('email') }}" required>
-                </div>
-                <div class="inputfield">
-                    <label>Mailing Address: *</label>
-                    <textarea class="textarea" name="mailing_address" required>{{ old('mailing_address') }}</textarea>
-                </div>
-                <div class="inputfield">
-                    <label>Bkash Number: *</label>
-                    <input type="text" class="input" name="bkash_number" value="{{ old('bkash_number') }}"
-                        required>
-                </div>
-                <div class="inputfield">
-                    <label>District: *</label>
-                    <input type="text" class="input" name="district" value="{{ old('district') }}" required>
-                </div>
-                <div class="inputfield">
-                    <label>How do you know Syngenta? *</label>
-                    <input type="text" class="input" name="syngenta_knowledge"
-                        value="{{ old('syngenta_knowledge') }}" required>
-                </div>
-                <div class="inputfield">
-                    <label>What is your career ambition? *</label>
-                    <input type="text" class="input" name="career_ambition" value="{{ old('career_ambition') }}"
-                        required>
-                </div>
-                <div class="inputfield">
-                    <label>Applicant's Photo: *</label>
-                    <input type="file" accept="image/*" name="applicant_photo" value="{{ old('applicant_photo') }}"
-                        required>
-                </div>
-                <div class="inputfield">
-                    <label>Student ID: *</label>
-                    <input type="file" accept="image/*" name="student_id" value="{{ old('student_id') }}" required>
-                </div>
-                <div class="inputfield">
-                    <label>Applicant's NID: *</label>
-                    <input type="file" accept="image/*" name="applicant_nid" value="{{ old('applicant_nid') }}"
-                        required>
-                </div>
-                <div class="inputfield">
-                    <label>Academic Performance: 5th Semester *</label>
-                    <input type="file" accept="application/pdf" name="academic_performance_5th"
-                        value="{{ old('academic_performance_5th') }}" required>
-                </div>
-                <div class="inputfield">
-                    <label>Academic Performance: 6th Semester *</label>
-                    <input type="file" accept="application/pdf" name="academic_performance_6th"
-                        value="{{ old('academic_performance_6th') }}" required>
-                </div>
-                <div class="inputfield">
-                    <label>Upload Docs: *</label>
-                    <input type="file" multiple name="upload_docs" value="{{ old('upload_docs') }}" required>
-                </div>
-                <!-- End of Integrated New Form Design -->
-
-                <div class="inputfield">
-                    <input type="submit" value="Register" class="btn">
-                </div>
             </div>
-        </div>
-
+        </form>
     </div>
 
 
