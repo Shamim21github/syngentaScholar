@@ -18,7 +18,7 @@
         }
 
         body {
-            background: url('{{ asset('frontend/assets/images/registration.png') }}') no-repeat center center fixed;
+            background: url('{{ asset('frontend/assets/images/registration5.png') }}') no-repeat center center fixed;
 
             /* background:  url('{{ asset('frontend/assets/images/bg.jpg') }}') no-repeat center center fixed; */
             /* padding: 0 10px; */
@@ -32,7 +32,8 @@
             /* Updated width to 950px */
             width: 100%;
             /* background: transparent; */
-            background-color: rgba(227, 227, 227, 0.5);
+            /* background: url('{{ asset('frontend/assets/images/REGISTRATION-FORM10.jpg') }}') */
+            background-color: rgba(238, 225, 225, 0.5);
             /* Updated background color to transparent */
             margin: 50px auto;
             box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.125);
@@ -213,6 +214,7 @@
 </head>
 
 <body>
+    
     <div class="wrapper">
         <div class="title">
             Registration Form
@@ -222,7 +224,7 @@
             <div class="form">
                 <div class="form">
                     <div class="inputfield">
-                        <label>Applicants Name: *</label>
+                        <label>Applicant's Name: *</label>
                         <input type="text" class="input" name="application_name" value="{{ old('application_name') }}" required>
                         @error('application_name')
                         <span class="text-danger">{{ $message }}</span>
@@ -320,7 +322,7 @@
                     </div>
                     <div class="inputfield">
                         <label>How do you know Syngenta? *</label>
-                        <textarea id="syngentaTextarea" class="input" name="syngenta_knowledge" required>{{ old('syngenta_knowledge') }}</textarea>
+                        <textarea id="syngentaTextarea" class="input" name="syngenta_knowledge" placeholder="250 words maximum" required>{{ old('syngenta_knowledge') }}</textarea>
                         <!-- <span id="wordCount" class="text-muted">0 words</span> -->
                         @error('syngenta_knowledge')
                         <span class="text-danger">{{ $message }}</span>
@@ -328,13 +330,13 @@
                     </div>
                     <div class="inputfield">
                         <label>What is your career ambition? *</label>
-                        <input id="careerAmbitionInput" type="text" class="input" name="career_ambition" value="{{ old('career_ambition') }}" required>
+                        <input id="careerAmbitionInput" type="text" class="input" name="career_ambition" value="{{ old('career_ambition') }}" placeholder="250 words maximum" required>
                         @error('career_ambition')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="inputfield">
-                        <label>Applicant's Photo: *</label>
+                        <label>Applicant's Photo: (300 x 300 px) *</label>
                         <input type="file" accept="image/*" name="applicant_photo" value="{{ old('applicant_photo') }}" required>
                         @error('applicant_photo')
                         <span class="text-danger">{{ $message }}</span>
@@ -359,8 +361,8 @@
                         @error('applicant_nid_back_side')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
-                    </div>
-                    <span id="inputFieldsContainer"></span>
+                    </div> 
+                    <span id="inputFieldsContainer"></span> <br>
                     <!-- End of Integrated New Form Design -->
 
                     <div class="inputfield">
@@ -379,13 +381,13 @@
             if (selectedSemester === "8thsemester") {
                 inputFieldsContainer.innerHTML = `
                 <div class="inputfield">
-                    <label>Academic Performance: 8th Semester *</label>
-                    <label> 7th Semester</label>
+                    <label> 8th Semester Student : *</label>
+                    <label> 7th semester marksheet</label>
                     <input type="file" accept="application/pdf" name="academic_performance_7th_for_8th" value="{{ old('academic_performance_7th_for_8th') }}" required>
                     @error('academic_performance_7th_for_8th')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
-                    <label> 6th Semester</label>
+                    <label> 6th semester marksheet</label>
                     <input type="file" accept="application/pdf" name="academic_performance_6th_for_8th" value="{{ old('academic_performance_6th_for_8th') }}" required>
                     @error('academic_performance_6th_for_8th')
                     <span class="text-danger">{{ $message }}</span>
@@ -394,13 +396,13 @@
             } else if (selectedSemester === "7thsemester") {
                 inputFieldsContainer.innerHTML = `
                 <div class="inputfield">
-                    <label>Academic Performance: 7th Semester *</label>
-                    <label for=""> 6th Semester</label>
+                    <label> 7th Semester Student : *</label>
+                    <label for=""> 6th semester marksheet</label>
                     <input type="file" accept="application/pdf" name="academic_performance_6th_for_7th" value="{{ old('academic_performance_6th_for_7th') }}" required>
                     @error('academic_performance_6th_for_7th')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
-                    <label for=""> 5th Semester</label>
+                    <label for=""> 5th semester marksheet</label>
                     <input type="file" accept="application/pdf" name="academic_performance_5th_for_7th" value="{{ old('academic_performance_5th_for_7th') }}" required>
                     @error('academic_performance_5th_for_7th')
                     <span class="text-danger">{{ $message }}</span>

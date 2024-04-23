@@ -100,7 +100,7 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse" style="transform: translateX(200px);">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="#home" class="nav-link" style="color: black;font-weight: bold;font-size: 16px;">Home</a>
+                        <a href="{{ route('home') }}" class="nav-link" style="color: black;font-weight: bold;font-size: 16px;">Home</a>
                     </li>
 
                     <li class="nav-item">
@@ -113,7 +113,7 @@
                         <a href="{{ route('result') }}" class="nav-link" style="color: black;=font-size: 16px;">Result</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#contact" class="nav-link" style="color: black;font-size: 16px;">Contact</a>
+                        <a href="{{ route('contact') }}" class="nav-link" style="color: black;font-size: 16px;">Contact</a>
                     </li>
                     <li class="nav-item">
                         <form class="form-inline" onsubmit="performRandomSearch(event)">
