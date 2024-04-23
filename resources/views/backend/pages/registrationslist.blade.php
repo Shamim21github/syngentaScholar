@@ -59,19 +59,19 @@
             <td>{{$registration_list->syngenta_knowledge}}</td>
             <td>{{$registration_list->career_ambition}}</td>
             <td>
-                <img src="{{asset($registration_list->applicant_photo)}}" alt="" height="100px" width="100px">
+                <img src="{{asset('storage/'.$registration_list->applicant_photo)}}" alt="" height="100px" width="100px">
             </td>
             <td>
-                <img src="{{asset($registration_list->student_id)}}" alt="" height="100px" width="100px">
+                <img src="{{asset('storage/'.$registration_list->student_id)}}" alt="" height="100px" width="100px">
             </td>
             <td>
-                <img src="{{asset($registration_list->applicant_nid)}}" alt="" height="100px" width="100px">
+                <img src="{{asset('storage/'.$registration_list->applicant_nid)}}" alt="" height="100px" width="100px">
             </td>
             <td>
-                <img src="{{asset($registration_list->academic_performance_5th)}}" alt="" height="100px" width="100px">
+                {{$registration_list->academic_performance_5th}}
             </td>
             <td>
-                <img src="{{asset($registration_list->academic_performance_6th)}}" alt="" height="100px" width="100px">
+                {{$registration_list->academic_performance_6th}}
             </td>
             <td>
                 {{$registration_list->upload_docs}}

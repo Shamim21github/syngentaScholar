@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('academic_performance_5th')->nullable();
             $table->string('academic_performance_6th')->nullable();
             $table->string('upload_docs')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
