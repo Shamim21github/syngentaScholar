@@ -238,7 +238,7 @@ class RegistrationsController extends Controller
             $imagePath = str_replace('public/', '', $imagePath);
             $registration->update(['academic_performance_5th_for_7th' => $imagePath]);
         }
-        return redirect()->back()->with('message', 'Congratulations your application is accepted');
+        return redirect()->back()->with('message', ' Application updated successfully');
     }
 
     /**
@@ -246,6 +246,7 @@ class RegistrationsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Registration::where('id', $id)->delete();
+        return redirect()->back()->with('message', ' Application Delete successfully');
     }
 }
