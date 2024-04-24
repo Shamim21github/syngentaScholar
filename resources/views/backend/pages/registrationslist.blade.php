@@ -76,11 +76,26 @@
             <td>
                 <a href="{{ route('registrations.show', ['registration' => $registration_list->id]) }}" class="btn btn-primary">Show</a>
                 <a href="{{ route('registrations.edit', ['registration' => $registration_list->id]) }}" class="btn btn-secondary">Edit</a>
-                <!-- <button type="button" class="btn btn-success">Delete</button> -->
+                <a onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this item?')) { document.getElementById('delete-form-{{$registration_list->id}}').submit(); }" class="btn btn-danger">Delete</a>
+                <form id="delete-form-{{$registration_list->id}}" action="{{ route('registrations.destroy', ['registration' => $registration_list->id]) }}" method="POST" style="display: none;">
+                    @csrf
+                    @method('DELETE')
+                </form>
+
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
-<!-- End Table with stripped rows -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+    @if(Session::has('message'))
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true
+    }
+    toastr.error("{{ session('message') }}");
+    @endif
+</script>
 @endsection
