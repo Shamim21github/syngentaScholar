@@ -66,12 +66,24 @@
                 <img src="{{asset('storage/'.$registration_list->applicant_nid_back_side)}}" alt="" height="100px" width="100px">
             </td>
             <td>
-                {{$registration_list->academic_performance_7th_for_8th}}
-                {{$registration_list->academic_performance_6th_for_8th}}
+                @if($registration_list->academic_performance_7th_for_8th)
+                <iframe src="{{ asset('storage/'.$registration_list->academic_performance_7th_for_8th) }}" width="50%" height="100px">
+                </iframe>
+                @endif
+                @if($registration_list->academic_performance_6th_for_8th)
+                <iframe src="{{ asset('storage/'.$registration_list->academic_performance_6th_for_8th) }}" width="50%" height="100px">
+                </iframe>
+                @endif
             </td>
             <td>
-                {{$registration_list->academic_performance_6th_for_7th}}
-                {{$registration_list->academic_performance_5th_for_7th}}
+                @if($registration_list->academic_performance_6th_for_7th)
+                <iframe src="{{ asset('storage/'.$registration_list->academic_performance_6th_for_7th) }}" width="50%" height="100px">
+                </iframe>
+                @endif
+                @if($registration_list->academic_performance_5th_for_7th)
+                <iframe src="{{ asset('storage/'.$registration_list->academic_performance_5th_for_7th) }}" width="50%" height="100px">
+                </iframe>
+                @endif
             </td>
             <td>
                 <a href="{{ route('registrations.show', ['registration' => $registration_list->id]) }}" class="btn btn-primary">Show</a>
