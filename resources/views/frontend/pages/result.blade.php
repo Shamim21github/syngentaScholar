@@ -33,10 +33,13 @@
     <!-- Custom style Css -->
     {{-- <link rel="stylesheet" href="{{asset ('frontend/assets/css/style.css') }}"> --}}
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <style>
         .home-bg {
             position: relative;
-            background-image: url('{{ asset('frontend/assets/images/result2.png') }}');
+            background-image: url('{{ asset(' frontend/assets/images/result2.png') }}');
             /* background-image: url('{{ asset('frontend/assets/images/bg.jpg') }}'); */
             /* background-image: url('{{ asset('frontend/assets/images/WEB-PAGE.png') }}'); */
             background-size: cover;
@@ -166,7 +169,16 @@
     <!--CUSTOM JS-->
     <script src="{{asset ('frontend/assets/js/custom.js') }}"></script>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        @if(Session::has('message'))
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        }
+        toastr.success("{{ session('message') }}");
+        @endif
+    </script>
 </body>
 
 

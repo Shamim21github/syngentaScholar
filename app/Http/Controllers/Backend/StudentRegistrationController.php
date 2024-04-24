@@ -44,16 +44,20 @@ class StudentRegistrationController extends Controller
             'email' => 'required|email|unique:registrations,email',
             'mailing_address' => 'required|string',
             'bkash_number' => 'required|string',
-            'district' => 'required|string',
-            'syngenta_knowledge' => 'required|string',
-            'career_ambition' => 'required|string',
-            'applicant_photo' => 'required|image', // For image upload
+            'syngenta_knowledge' => 'required|string|max:250',
+            'career_ambition' => 'required|string|max:250',
+            'applicant_photo' => 'required|image',
             'student_id' => 'required|image',
-            'applicant_nid' => 'required|image',
-            'academic_performance_5th' => 'required|mimes:pdf',
-            'academic_performance_6th' => 'required|mimes:pdf',
-            'upload_docs' => 'required',
-        ]);
+            'applicant_nid_front_side' => 'required|image',
+            'applicant_nid_back_side' => 'required|image',
+        ] + ($request->has('academic_performance_7th_for_8th') ? [
+            'academic_performance_7th_for_8th' => 'required|mimes:pdf',
+            'academic_performance_6th_for_8th' => 'required|mimes:pdf',
+        ] : [
+            'academic_performance_6th_for_7th' => 'required|mimes:pdf',
+            'academic_performance_5th_for_7th' => 'required|mimes:pdf'
+        ]));
+
         // Upload applicant_photo
         if ($request->hasFile('applicant_photo')) {
             // Upload the image to the 'public' disk under the 'images' directory
@@ -70,37 +74,53 @@ class StudentRegistrationController extends Controller
             // Save the relative path of the image in the database
             $validatedData['student_id'] = $imagePath;
         }
-        // Upload applicant_nid
-        if ($request->hasFile('applicant_nid')) {
+        // Upload applicant_nid_front_side
+        if ($request->hasFile('applicant_nid_front_side')) {
             // Upload the image to the 'public' disk under the 'images' directory
-            $imagePath = $request->file('applicant_nid')->store('images', 'public');
+            $imagePath = $request->file('applicant_nid_front_side')->store('images', 'public');
 
             // Save the relative path of the image in the database
-            $validatedData['applicant_nid'] = $imagePath;
+            $validatedData['applicant_nid_front_side'] = $imagePath;
         }
-        // Upload academic_performance_5th
-        if ($request->hasFile('academic_performance_5th')) {
+        // Upload applicant_nid_back_side
+        if ($request->hasFile('applicant_nid_back_side')) {
             // Upload the image to the 'public' disk under the 'images' directory
-            $imagePath = $request->file('academic_performance_5th')->store('images', 'public');
+            $imagePath = $request->file('applicant_nid_back_side')->store('images', 'public');
 
             // Save the relative path of the image in the database
-            $validatedData['academic_performance_5th'] = $imagePath;
+            $validatedData['applicant_nid_back_side'] = $imagePath;
         }
-        // Upload academic_performance_6th
-        if ($request->hasFile('academic_performance_6th')) {
+        // Upload academic_performance_7th_for_8th
+        if ($request->hasFile('academic_performance_7th_for_8th')) {
             // Upload the image to the 'public' disk under the 'images' directory
-            $imagePath = $request->file('academic_performance_6th')->store('images', 'public');
+            $imagePath = $request->file('academic_performance_7th_for_8th')->store('images', 'public');
 
             // Save the relative path of the image in the database
-            $validatedData['academic_performance_6th'] = $imagePath;
+            $validatedData['academic_performance_7th_for_8th'] = $imagePath;
         }
-        // Upload upload_docs
-        if ($request->hasFile('upload_docs')) {
+        // Upload academic_performance_6th_for_8th
+        if ($request->hasFile('academic_performance_6th_for_8th')) {
             // Upload the image to the 'public' disk under the 'images' directory
-            $imagePath = $request->file('upload_docs')->store('images', 'public');
+            $imagePath = $request->file('academic_performance_6th_for_8th')->store('images', 'public');
 
             // Save the relative path of the image in the database
-            $validatedData['upload_docs'] = $imagePath;
+            $validatedData['academic_performance_6th_for_8th'] = $imagePath;
+        }
+        // Upload academic_performance_6th_for_7th
+        if ($request->hasFile('academic_performance_6th_for_7th')) {
+            // Upload the image to the 'public' disk under the 'images' directory
+            $imagePath = $request->file('academic_performance_6th_for_7th')->store('images', 'public');
+
+            // Save the relative path of the image in the database
+            $validatedData['academic_performance_6th_for_7th'] = $imagePath;
+        }
+        // Upload academic_performance_5th_for_7th
+        if ($request->hasFile('academic_performance_5th_for_7th')) {
+            // Upload the image to the 'public' disk under the 'images' directory
+            $imagePath = $request->file('academic_performance_5th_for_7th')->store('images', 'public');
+
+            // Save the relative path of the image in the database
+            $validatedData['academic_performance_5th_for_7th'] = $imagePath;
         }
         // Create a new instance of YourModel
         $model = new Registration();
@@ -113,7 +133,8 @@ class StudentRegistrationController extends Controller
 
         // Optionally, you can return a response
         // return response()->json(['message' => 'Data stored successfully'], 201);
-        return redirect('result');
+        // return redirect('result');
+        return redirect('result')->with('message', 'Congratulations your application is accepted');
     }
 
     /**

@@ -26,16 +26,17 @@ class RegistrationFactory extends Factory
             'contact_number' => $this->faker->phoneNumber,
             'email' => $this->faker->unique()->safeEmail,
             'mailing_address' => $this->faker->address,
-            'bkash_number' => $this->faker->phoneNumber, // Assuming bKash number can be a phone number
-            'district' => $this->faker->city,
+            'bkash_number' => $this->faker->phoneNumber,
             'syngenta_knowledge' => $this->faker->boolean,
             'career_ambition' => $this->faker->sentence,
-            'applicant_photo' => $this->faker->imageUrl(), // Generating a fake image URL
+            'applicant_photo' => $this->faker->imageUrl(),
             'student_id' => $this->faker->imageUrl(),
-            'applicant_nid' => $this->faker->imageUrl(),
-            'academic_performance_5th' => $this->faker->imageUrl(), // Assuming GPA format
-            'academic_performance_6th' => $this->faker->imageUrl(), // Assuming GPA format
-            'upload_docs' => $this->faker->url // Generating a fake URL for uploaded documents
+            'applicant_nid_front_side' => $this->faker->imageUrl(),
+            'applicant_nid_back_side' => $this->faker->imageUrl(),
+            'academic_performance_7th_for_8th' => $this->faker->imageUrl(),
+            'academic_performance_6th_for_8th' => $this->faker->imageUrl(),
+            'academic_performance_6th_for_7th' => $this->faker->imageUrl(),
+            'academic_performance_5th_for_7th' => $this->faker->imageUrl(),
         ];
     }
 }

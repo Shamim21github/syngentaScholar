@@ -27,15 +27,13 @@
             <th>Email</th>
             <th>Mailing Address</th>
             <th>Bkash Number</th>
-            <th>District</th>
             <th>How do you know Syngenta</th>
             <th>What is your career ambition</th>
             <th>Applicant's Photo</th>
             <th>Student ID</th>
             <th>Applicant's NID</th>
-            <th>Academic Performance: 5th Semester</th>
-            <th>Academic Performance: 6th Semester</th>
-            <th>Upload Docs</th>
+            <th>Academic Performance:8th Semester</th>
+            <th>Academic Performance: 7th Semester</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -55,7 +53,6 @@
             <td>{{$registration_list->email}}</td>
             <td>{{$registration_list->mailing_address}}</td>
             <td>{{$registration_list->bkash_number}}</td>
-            <td>{{$registration_list->district}}</td>
             <td>{{$registration_list->syngenta_knowledge}}</td>
             <td>{{$registration_list->career_ambition}}</td>
             <td>
@@ -65,18 +62,22 @@
                 <img src="{{asset('storage/'.$registration_list->student_id)}}" alt="" height="100px" width="100px">
             </td>
             <td>
-                <img src="{{asset('storage/'.$registration_list->applicant_nid)}}" alt="" height="100px" width="100px">
+                <img src="{{asset('storage/'.$registration_list->applicant_nid_front_side)}}" alt="" height="100px" width="100px"> <br>
+                <img src="{{asset('storage/'.$registration_list->applicant_nid_back_side)}}" alt="" height="100px" width="100px">
             </td>
             <td>
-                {{$registration_list->academic_performance_5th}}
+                {{$registration_list->academic_performance_7th_for_8th}}
+                {{$registration_list->academic_performance_6th_for_8th}}
             </td>
             <td>
-                {{$registration_list->academic_performance_6th}}
+                {{$registration_list->academic_performance_6th_for_7th}}
+                {{$registration_list->academic_performance_5th_for_7th}}
             </td>
             <td>
-                {{$registration_list->upload_docs}}
+                <a href="{{ route('registrations.show', ['registration' => $registration_list->id]) }}" class="btn btn-primary">Show</a>
+                <a href="{{ route('registrations.edit', ['registration' => $registration_list->id]) }}" class="btn btn-secondary">Edit</a>
+                <!-- <button type="button" class="btn btn-success">Delete</button> -->
             </td>
-            <td></td>
         </tr>
         @endforeach
     </tbody>
