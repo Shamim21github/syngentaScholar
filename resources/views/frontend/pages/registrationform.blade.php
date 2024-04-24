@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Registration Form Design</title>
 
     <style>
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
@@ -18,7 +18,8 @@
         }
 
         body {
-            background: url('{{ asset(' frontend/assets/images/registration5.png') }}') no-repeat center center fixed;
+
+            background: url('{{ asset('frontend/assets/images/registration5.png') }}') no-repeat center center fixed;
 
             /* background:  url('{{ asset('frontend/assets/images/bg.jpg') }}') no-repeat center center fixed; */
             /* padding: 0 10px; */
@@ -216,6 +217,9 @@
 <body>
 
     <div class="wrapper">
+            {{-- <div class="logo">
+                <a href=""> <img src="background: url('{{ asset('frontend/assets/images/registration5.png') }}')" alt=""> </a>
+            </div> --}}
         <div class="title">
             Registration Form
         </div>
