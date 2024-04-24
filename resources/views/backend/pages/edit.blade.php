@@ -7,7 +7,9 @@
             <h5 class="card-title">General Form Elements</h5>
 
             <!-- General Form Elements -->
-            <form>
+            <form action="{{ route('registrations.update', ['registration' => $registration->id]) }}" method="POST" enctype="multipart/form-data">
+                @method('PUT')
+                @csrf
                 <div class="row mb-3">
                     <label for="inputText" class="col-sm-2 col-form-label">Applicant Nmae</label>
                     <div class="col-sm-10">
@@ -90,32 +92,42 @@
                 <div class="row mb-3">
                     <label for="inputText" class="col-sm-2 col-form-label">How do you know Syngenta?</label>
                     <div class="col-sm-10">
-                        <textarea name="syngenta_knowledge" class="form-control" id="" cols="30" rows="10">{{$registration->syngenta_knowledge}}</textarea>
+                        <textarea name="syngenta_knowledge" class="form-control" id="" cols="0" rows="0">{{$registration->syngenta_knowledge}}</textarea>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="inputText" class="col-sm-2 col-form-label">What is your career ambition? </label>
                     <div class="col-sm-10">
-                        <textarea name="career_ambition" class="form-control" id="" cols="30" rows="10">{{$registration->career_ambition}}</textarea>
+                        <textarea name="career_ambition" class="form-control" id="" cols="0" rows="0">{{$registration->career_ambition}}</textarea>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="inputText" class="col-sm-2 col-form-label">Applicant's Photo: </label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-5">
                         <input type="file" class="form-control" name="applicant_photo" value="{{$registration->applicant_photo}}">
+                    </div>
+                    <div class="col-sm-5">
+                        <img src="{{asset('storage/'.$registration->applicant_photo)}}" alt="" height="100px" width="100px">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="inputText" class="col-sm-2 col-form-label">Student ID: </label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-5">
                         <input type="file" class="form-control" name="student_id" value="{{$registration->student_id}}">
+                    </div>
+                    <div class="col-sm-5">
+                        <img src="{{asset('storage/'.$registration->student_id)}}" alt="" height="100px" width="100px">
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="inputText" class="col-sm-2 col-form-label">Applicant's NID: </label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-5">
                         <input type="file" class="form-control" name="applicant_nid_front_side" value="{{$registration->applicant_nid_front_side}}">
                         <input type="file" class="form-control" name="applicant_nid_back_side" value="{{$registration->applicant_nid_back_side}}">
+                    </div>
+                    <div class="col-sm-5">
+                        <img src="{{asset('storage/'.$registration->applicant_nid_front_side)}}" alt="" height="100px" width="100px">
+                        <img src="{{asset('storage/'.$registration->applicant_nid_back_side)}}" alt="" height="100px" width="100px">
                     </div>
                 </div>
                 <span id="inputFieldsContainer"></span> <br>
@@ -127,20 +139,32 @@
                         {{'7th Semester Student'}}
                         @endif
                     </label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-4">
                         @if($registration->semester == '8thsemester')
-                        <input type="file" class="form-control" name="applicant_nid_front_side" value="{{$registration->academic_performance_7th_for_8th}}">
-                        <input type="file" class="form-control" name="applicant_nid_back_side" value="{{$registration->academic_performance_6th_for_8th}}">
+                        <input type="file" class="form-control" name="academic_performance_7th_for_8th" value="{{$registration->academic_performance_7th_for_8th}}">
+                        <input type="file" class="form-control" name="academic_performance_6th_for_8th" value="{{$registration->academic_performance_6th_for_8th}}">
                         @else
-                        <input type="file" class="form-control" name="applicant_nid_front_side" value="{{$registration->academic_performance_6th_for_7th}}">
-                        <input type="file" class="form-control" name="applicant_nid_back_side" value="{{$registration->academic_performance_5th_for_7th}}">
+                        <input type="file" class="form-control" name="academic_performance_6th_for_7th" value="{{$registration->academic_performance_6th_for_7th}}">
+                        <input type="file" class="form-control" name="academic_performance_5th_for_7th" value="{{$registration->academic_performance_5th_for_7th}}">
+                        @endif
+                    </div>
+                    <div class="col-sm-6">
+                        @if($registration->semester == '8thsemester')
+                        <iframe src="{{ asset('storage/'.$registration->academic_performance_7th_for_8th) }}" width="50%" height="600">
+                        </iframe>
+                        <iframe src="{{ asset('storage/'.$registration->academic_performance_6th_for_8th) }}" width="50%" height="600">
+                        </iframe>
+                        @else
+                        <iframe src="{{ asset('storage/'.$registration->academic_performance_5th_for_7th) }}" width="50%" height="300">
+                        </iframe>
+                        <iframe src="{{ asset('storage/'.$registration->academic_performance_6th_for_7th) }}" width="50%" height="300">
+                        </iframe>
                         @endif
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label">Submit Button</label>
                     <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">Submit Form</button>
+                        <input type="submit" value="Submit" class="btn btn-info">
                     </div>
                 </div>
 
@@ -149,6 +173,9 @@
         </div>
     </div>
 </div>
+<!-- Toastr -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         var semesterSelect = document.getElementById("semester");
@@ -201,5 +228,12 @@
                 </div>`;
         }
     });
+    @if(Session::has('message'))
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true
+    }
+    toastr.success("{{ session('message') }}");
+    @endif
 </script>
 @endsection

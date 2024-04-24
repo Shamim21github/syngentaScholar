@@ -130,10 +130,6 @@ class StudentRegistrationController extends Controller
 
         // Save the record
         $model->save();
-
-        // Optionally, you can return a response
-        // return response()->json(['message' => 'Data stored successfully'], 201);
-        // return redirect('result');
         return redirect('result')->with('message', 'Congratulations your application is accepted');
     }
 
