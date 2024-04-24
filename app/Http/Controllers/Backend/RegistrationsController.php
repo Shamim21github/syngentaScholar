@@ -122,7 +122,8 @@ class RegistrationsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $registration = Registration::find($id);
+        return view('backend.pages.show', get_defined_vars());
     }
 
     /**
@@ -130,7 +131,8 @@ class RegistrationsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $registration = Registration::find($id);
+        return view('backend.pages.edit', get_defined_vars());
     }
 
     /**

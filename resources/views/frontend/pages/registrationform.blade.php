@@ -18,7 +18,7 @@
         }
 
         body {
-            background: url('{{ asset('frontend/assets/images/registration5.png') }}') no-repeat center center fixed;
+            background: url('{{ asset(' frontend/assets/images/registration5.png') }}') no-repeat center center fixed;
 
             /* background:  url('{{ asset('frontend/assets/images/bg.jpg') }}') no-repeat center center fixed; */
             /* padding: 0 10px; */
@@ -214,7 +214,7 @@
 </head>
 
 <body>
-    
+
     <div class="wrapper">
         <div class="title">
             Registration Form
@@ -361,7 +361,7 @@
                         @error('applicant_nid_back_side')
                         <span class="text-danger">{{ $message }}</span>
                         @enderror
-                    </div> 
+                    </div>
                     <span id="inputFieldsContainer"></span> <br>
                     <!-- End of Integrated New Form Design -->
 

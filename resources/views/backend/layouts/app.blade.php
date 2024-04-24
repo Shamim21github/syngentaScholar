@@ -29,9 +29,9 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('backend')}}/assets/css/style.css" rel="stylesheet">
   <!-- Toastr -->
-  <link rel="stylesheet" href="{{ asset('backend') }}/assets/toastr/toastr.min.css">
+  <!-- <link rel="stylesheet" href="{{ asset('backend') }}/assets/toastr/toastr.min.css"> -->
   <!-- SweetAlert2 -->
-  <link rel="stylesheet" href="{{ asset('backend') }}/assets/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- <link rel="stylesheet" href="{{ asset('backend') }}/assets/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css"> -->
   <!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: Mar 13 2024 with Bootstrap v5.3.3
@@ -75,9 +75,9 @@
   <!-- Template Main JS File -->
   <script src="{{asset('backend')}}/assets/js/main.js"></script>
   <!-- Toastr -->
-  <script src="{{ asset('backend') }}/assets/toastr/toastr.min.js"></script>
+  <!-- <script src="{{ asset('backend') }}/assets/toastr/toastr.min.js"></script> -->
   <!-- SweetAlert2 -->
-  <script src="{{ asset('backend') }}/assets/sweetalert2/sweetalert2.min.js"></script>
+  <!-- <script src="{{ asset('backend') }}/assets/sweetalert2/sweetalert2.min.js"></script> -->
 </body>
 
 </html>
