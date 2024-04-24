@@ -140,7 +140,105 @@ class RegistrationsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // return $request->all();
+        $registration = Registration::findOrFail($id);
+        $registration->update($request->all());
+
+        // Upload applicant_photo
+        if ($request->hasFile('applicant_photo')) {
+            $image = $request->file('applicant_photo');
+
+            // Upload the image to the 'public' disk under the 'images' directory
+            $imagePath = $image->store('images', 'public');
+
+            // Save the relative path of the image in the database
+            // Modify the path to match the desired format
+            $imagePath = str_replace('public/', '', $imagePath);
+            $registration->update(['applicant_photo' => $imagePath]);
+        }
+        // Upload student_id
+        if ($request->hasFile('student_id')) {
+            $image = $request->file('student_id');
+
+            // Upload the image to the 'public' disk under the 'images' directory
+            $imagePath = $image->store('images', 'public');
+
+            // Save the relative path of the image in the database
+            // Modify the path to match the desired format
+            $imagePath = str_replace('public/', '', $imagePath);
+            $registration->update(['student_id' => $imagePath]);
+        }
+        // Upload applicant_nid_front_side
+        if ($request->hasFile('applicant_nid_front_side')) {
+            $image = $request->file('applicant_nid_front_side');
+
+            // Upload the image to the 'public' disk under the 'images' directory
+            $imagePath = $image->store('images', 'public');
+            // Save the relative path of the image in the database
+            // Modify the path to match the desired format
+            $imagePath = str_replace('public/', '', $imagePath);
+            $registration->update(['applicant_nid_front_side' => $imagePath]);
+        }
+        // Upload applicant_nid_back_side
+        if ($request->hasFile('applicant_nid_back_side')) {
+            $image = $request->file('applicant_nid_back_side');
+
+            // Upload the image to the 'public' disk under the 'images' directory
+            $imagePath = $image->store('images', 'public');
+            // Save the relative path of the image in the database
+            // Modify the path to match the desired format
+            $imagePath = str_replace('public/', '', $imagePath);
+            $registration->update(['applicant_nid_back_side' => $imagePath]);
+        }
+        // Upload academic_performance_7th_for_8th
+        if ($request->hasFile('academic_performance_7th_for_8th')) {
+            $image = $request->file('academic_performance_7th_for_8th');
+
+            // Upload the image to the 'public' disk under the 'images' directory
+            $imagePath = $image->store('images', 'public');
+
+            // Save the relative path of the image in the database
+            // Modify the path to match the desired format
+            $imagePath = str_replace('public/', '', $imagePath);
+            $registration->update(['academic_performance_7th_for_8th' => $imagePath]);
+        }
+        // Upload academic_performance_6th_for_8th
+        if ($request->hasFile('academic_performance_6th_for_8th')) {
+            $image = $request->file('academic_performance_6th_for_8th');
+
+            // Upload the image to the 'public' disk under the 'images' directory
+            $imagePath = $image->store('images', 'public');
+
+            // Save the relative path of the image in the database
+            // Modify the path to match the desired format
+            $imagePath = str_replace('public/', '', $imagePath);
+            $registration->update(['academic_performance_6th_for_8th' => $imagePath]);
+        }
+        // // Upload academic_performance_6th_for_7th
+        if ($request->hasFile('academic_performance_6th_for_7th')) {
+            $image = $request->file('academic_performance_6th_for_7th');
+
+            // Upload the image to the 'public' disk under the 'images' directory
+            $imagePath = $image->store('images', 'public');
+
+            // Save the relative path of the image in the database
+            // Modify the path to match the desired format
+            $imagePath = str_replace('public/', '', $imagePath);
+            $registration->update(['academic_performance_6th_for_7th' => $imagePath]);
+        }
+        // Upload academic_performance_5th_for_7th
+        if ($request->hasFile('academic_performance_5th_for_7th')) {
+            $image = $request->file('academic_performance_5th_for_7th');
+
+            // Upload the image to the 'public' disk under the 'images' directory
+            $imagePath = $image->store('images', 'public');
+
+            // Save the relative path of the image in the database
+            // Modify the path to match the desired format
+            $imagePath = str_replace('public/', '', $imagePath);
+            $registration->update(['academic_performance_5th_for_7th' => $imagePath]);
+        }
+        return redirect()->back()->with('message', 'Congratulations your application is accepted');
     }
 
     /**
