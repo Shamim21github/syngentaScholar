@@ -36,7 +36,8 @@
     <style>
         .home-bg {
             position: relative;
-            background-image: url('{{ asset('frontend/assets/images/contact.png') }}');
+             background-image: url('{{ asset('frontend/assets/images/contact3.png') }}');
+             /* background-image: url('{{ asset('frontend/assets/images/contact2.png') }}'); */
             /* background-image: url('{{ asset('frontend/assets/images/bg.jpg') }}'); */
             /* background-image: url('{{ asset('frontend/assets/images/WEB-PAGE.png') }}'); */
             background-size: cover;

@@ -14,7 +14,7 @@ class RegistrationsSeeder extends Seeder
     public function run(): void
     {
         // Define how many registration records you want to create
-        $numberOfRegistrations = 5;
+        $numberOfRegistrations = 2;
 
         // Using the factory to create multiple registration records
         Registration::factory()->count($numberOfRegistrations)->create();
