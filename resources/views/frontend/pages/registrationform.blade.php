@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registration Form Design</title>
+    <title>Agri Scholarship Registration Form</title>
 
     <style>
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
@@ -19,7 +19,9 @@
 
         body {
 
-            background: url('{{ asset(' frontend/assets/images/registration5.png') }}') no-repeat center center fixed;
+            /* background: url('{{ asset('frontend/assets/images/registration5.png') }}') no-repeat center center fixed; */
+
+            background: url('{{ asset('frontend/assets/images/final/registrationnewFinal.jpg') }}') no-repeat center center fixed;
 
             /* background:  url('{{ asset('frontend/assets/images/bg.jpg') }}') no-repeat center center fixed; */
             /* padding: 0 10px; */
@@ -215,167 +217,193 @@
 </head>
 
 <body>
+    <div class="container">
 
-    <div class="wrapper">
-        {{-- <div class="logo">
+        <div style="margin-top:10px; margin-left:300px;font-weight: bold" >
+            <a href="{{ route('home') }}">Home</a>
+         </div>
+
+
+
+        <div class="wrapper">
+            {{-- <div class="logo">
                 <a href=""> <img src="background: url('{{ asset('frontend/assets/images/registration5.png') }}')" alt=""> </a>
     </div> --}}
-    <div class="title">
-        Registration Form
-    </div>
-    <form action="{{route('student-registrations.store')}}" method="post" enctype="multipart/form-data">
-        @csrf
-        <div class="form">
-            <div class="form">
-                <div class="inputfield">
-                    <label>Applicant's Name: *</label>
-                    <input type="text" class="input" name="application_name" value="{{ old('application_name') }}" required>
-                    @error('application_name')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="inputfield">
-                    <label>Name of the Institution: *</label>
-                    <input type="text" class="input" name="institution_name" value="{{ old('institution_name') }}" required>
-                    @error('institution_name')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="inputfield">
-                    <label>Department/Faculty: *</label>
-                    <input type="text" class="input" name="department" value="{{ old('department') }}" required>
-                    @error('department')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="inputfield">
-                    <label>Roll No: *</label>
-                    <input type="number" class="input" name="roll_no" value="{{ old('roll_no') }}" required>
-                    @error('roll_no')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="inputfield">
-                    <label>Session: *</label>
-                    <input type="number" class="input" name="session" value="{{ old('session') }}" required>
-                    @error('session')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="inputfield">
-                    <label>Semester: *</label>
-                    <div class="custom_select">
-                        <select name="semester" id="semester" required>
-                            <option value="">Select</option>
-                            <option value="8thsemester" {{ old('8thsemester') == '8thsemester' ? 'selected' : '' }}>8th semester</option>
-                            <option value="7thsemester" {{ old('7thsemester') == '7thsemester' ? 'selected' : '' }}>7th semester</option>
-                        </select>
-                        @error('semester')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="inputfield">
-                    <label>Gender: *</label>
-                    <div class="custom_select">
-                        <select name="gender" required>
-                            <option value="">Select</option>
-                            <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
-                            <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
-                            <option value="other" {{ old('gender') == 'other' ? 'selected' : '' }}>Other</option>
-                        </select>
-                        @error('gender')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="inputfield">
-                    <label>Date of Birth: *</label>
-                    <input type="date" class="input" name="date_of_birth" value="{{ old('date_of_birth') }}" required>
-                    @error('date_of_birth')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="inputfield">
-                    <label>Contact Number: *</label>
-                    <input type="tel" class="input" name="contact_number" value="{{ old('contact_number') }}" required>
-                    @error('contact_number')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="inputfield">
-                    <label>Email: *</label>
-                    <input type="email" class="input" name="email" value="{{ old('email') }}" required>
-                    @error('email')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="inputfield">
-                    <label>Mailing Address: *</label>
-                    <textarea class="textarea" name="mailing_address" required>{{ old('mailing_address') }}</textarea>
-                    @error('mailing_address')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="inputfield">
-                    <label>Bkash Number: *</label>
-                    <input type="text" class="input" name="bkash_number" value="{{ old('bkash_number') }}" required>
-                    @error('bkash_number')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="inputfield">
-                    <label>How do you know Syngenta? *</label>
-                    <textarea id="syngentaTextarea" class="input" name="syngenta_knowledge" placeholder="250 words maximum" required>{{ old('syngenta_knowledge') }}</textarea>
-                    <!-- <span id="wordCount" class="text-muted">0 words</span> -->
-                    @error('syngenta_knowledge')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="inputfield">
-                    <label>What is your career ambition? *</label>
-                    <input id="careerAmbitionInput" type="text" class="input" name="career_ambition" value="{{ old('career_ambition') }}" placeholder="250 words maximum" required>
-                    @error('career_ambition')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="inputfield">
-                    <label>Applicant's Photo: (300 x 300 px) *</label>
-                    <input type="file" accept="image/*" name="applicant_photo" id="applicant_photo" onchange="validateImage()" required>
-                    @error('applicant_photo')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                    <span id="error-message"></span>
-                </div>
-                <div class="inputfield">
-                    <label>Student ID: *</label>
-                    <input type="file" accept="image/*" name="student_id" value="{{ old('student_id') }}" required>
-                    @error('student_id')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="inputfield">
-                    <label>Applicant's NID: *</label>
-                    <label for="">Front Side</label>
-                    <input type="file" accept="image/*" name="applicant_nid_front_side" value="{{ old('applicant_nid_front_side') }}" required>
-                    @error('applicant_nid_front_side')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                    <label for="">Back Side</label>
-                    <input type="file" accept="image/*" name="applicant_nid_back_side" value="{{ old('applicant_nid_back_side') }}" required>
-                    @error('applicant_nid_back_side')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-                <span id="inputFieldsContainer"></span> <br>
-                <!-- End of Integrated New Form Design -->
-
-                <div class="inputfield">
-                    <input type="submit" value="Submit" class="btn">
-                </div>
+            <div class="title">
+                Registration Form
             </div>
+            <form action="{{ route('student-registrations.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="form">
+                    <div class="form">
+                        <div class="inputfield">
+                            <label>Applicant's Name: *</label>
+                            <input type="text" class="input" name="application_name"
+                                value="{{ old('application_name') }}" required>
+                            @error('application_name')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="inputfield">
+                            <label>Name of the Institution: *</label>
+                            <input type="text" class="input" name="institution_name"
+                                value="{{ old('institution_name') }}" required>
+                            @error('institution_name')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="inputfield">
+                            <label>Department/Faculty: *</label>
+                            <input type="text" class="input" name="department" value="{{ old('department') }}"
+                                required>
+                            @error('department')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="inputfield">
+                            <label>Roll No: *</label>
+                            <input type="number" class="input" name="roll_no" value="{{ old('roll_no') }}" required>
+                            @error('roll_no')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="inputfield">
+                            <label>Session: *</label>
+                            <input type="number" class="input" name="session" value="{{ old('session') }}" required>
+                            @error('session')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="inputfield">
+                            <label>Semester: *</label>
+                            <div class="custom_select">
+                                <select name="semester" id="semester" required>
+                                    <option value="">Select</option>
+                                    <option value="8thsemester"
+                                        {{ old('8thsemester') == '8thsemester' ? 'selected' : '' }}>8th semester
+                                    </option>
+                                    <option value="7thsemester"
+                                        {{ old('7thsemester') == '7thsemester' ? 'selected' : '' }}>7th semester
+                                    </option>
+                                </select>
+                                @error('semester')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="inputfield">
+                            <label>Gender: *</label>
+                            <div class="custom_select">
+                                <select name="gender" required>
+                                    <option value="">Select</option>
+                                    <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male
+                                    </option>
+                                    <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female
+                                    </option>
+                                    <option value="other" {{ old('gender') == 'other' ? 'selected' : '' }}>Other
+                                    </option>
+                                </select>
+                                @error('gender')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="inputfield">
+                            <label>Date of Birth: *</label>
+                            <input type="date" class="input" name="date_of_birth"
+                                value="{{ old('date_of_birth') }}" required>
+                            @error('date_of_birth')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="inputfield">
+                            <label>Contact Number: *</label>
+                            <input type="tel" class="input" name="contact_number"
+                                value="{{ old('contact_number') }}" required>
+                            @error('contact_number')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="inputfield">
+                            <label>Email: *</label>
+                            <input type="email" class="input" name="email" value="{{ old('email') }}" required>
+                            @error('email')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="inputfield">
+                            <label>Mailing Address: *</label>
+                            <textarea class="textarea" name="mailing_address" required>{{ old('mailing_address') }}</textarea>
+                            @error('mailing_address')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="inputfield">
+                            <label>Bkash Number: *</label>
+                            <input type="text" class="input" name="bkash_number" value="{{ old('bkash_number') }}"
+                                required>
+                            @error('bkash_number')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="inputfield">
+                            <label>How do you know Syngenta? *</label>
+                            <textarea id="syngentaTextarea" class="input" name="syngenta_knowledge" placeholder="250 words maximum" required>{{ old('syngenta_knowledge') }}</textarea>
+                            <!-- <span id="wordCount" class="text-muted">0 words</span> -->
+                            @error('syngenta_knowledge')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="inputfield">
+                            <label>What is your career ambition? *</label>
+                            <input id="careerAmbitionInput" type="text" class="input" name="career_ambition"
+                                value="{{ old('career_ambition') }}" placeholder="250 words maximum" required>
+                            @error('career_ambition')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="inputfield">
+                            <label>Applicant's Photo: (300 x 300 px) *</label>
+                            <input type="file" accept="image/*" name="applicant_photo" id="applicant_photo"
+                                onchange="validateImage()" required>
+                            @error('applicant_photo')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                            <span id="error-message"></span>
+                        </div>
+                        <div class="inputfield">
+                            <label>Student ID: *</label>
+                            <input type="file" accept="image/*" name="student_id"
+                                value="{{ old('student_id') }}" required>
+                            @error('student_id')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="inputfield">
+                            <label>Applicant's NID: *</label>
+                            <label for="">Front Side</label>
+                            <input type="file" accept="image/*" name="applicant_nid_front_side"
+                                value="{{ old('applicant_nid_front_side') }}" required>
+                            @error('applicant_nid_front_side')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                            <label for="">Back Side</label>
+                            <input type="file" accept="image/*" name="applicant_nid_back_side"
+                                value="{{ old('applicant_nid_back_side') }}" required>
+                            @error('applicant_nid_back_side')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <span id="inputFieldsContainer"></span> <br>
+                        <!-- End of Integrated New Form Design -->
+
+                        <div class="inputfield">
+                            <input type="submit" value="Submit" class="btn">
+                        </div>
+                    </div>
+                </div>
         </div>
-    </form>
+        </form>
     </div>
     <script>
         document.getElementById("semester").addEventListener("change", function() {
