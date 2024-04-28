@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Registration;
+use App\Mail\ApplicationAccepted;
+use Illuminate\Support\Facades\Mail;
 
 class StudentRegistrationController extends Controller
 {
@@ -35,8 +37,8 @@ class StudentRegistrationController extends Controller
             'application_name' => 'required|string',
             'institution_name' => 'required|string',
             'department' => 'required|string',
-            'roll_no' => 'required|number',
-            'session' => 'required|number',
+            'roll_no' => 'required|string',
+            'session' => 'required|string',
             'semester' => 'required|string',
             'gender' => 'required|string',
             'date_of_birth' => 'required|date',
@@ -130,6 +132,10 @@ class StudentRegistrationController extends Controller
 
         // Save the record
         $model->save();
+        // Send email to the applicant
+        $application_name = $model->application_name;
+        $email = $model->email;
+        Mail::to($email)->send(new ApplicationAccepted($application_name));
         return redirect('result')->with('message', 'Congratulations your application is accepted');
     }
 
