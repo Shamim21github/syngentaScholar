@@ -36,7 +36,7 @@
     <style>
         .home-bg {
             position: relative;
-            background-image: url('{{ asset('frontend/assets/images/bg4.jpg') }}');
+            background-image: url('{{ asset('frontend/assets/images/bg5.jpg') }}');
             /* background-image: url('{{ asset('frontend/assets/images/bg.jpg') }}'); */
             /* background-image: url('{{ asset('frontend/assets/images/WEB-PAGE.png') }}'); */
             background-size: cover;
@@ -91,9 +91,9 @@
     <nav class="navbar navbar-expand-lg fixed-top custom-nav sticky">
         <div class="container">
             <!-- LOGO -->
-            <a class="navbar-brand logo" href="#">
+            {{-- <a class="navbar-brand logo" href="#">
                 <img style="height: 50px; width: 140px;" src="{{ asset('frontend/assets/images/syngenta.png') }}" alt="" class="img-fluid logo-light">
-            </a>
+            </a> --}}
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="mdi mdi-menu"></i>
