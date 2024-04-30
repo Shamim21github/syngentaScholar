@@ -30,7 +30,7 @@
 
     /* CSS */
     .medium-image {
-        height: 200px;
+        height: 500px;
         width: auto;
         cursor: pointer;
         /* Add cursor pointer when image is clickable */
@@ -196,11 +196,12 @@
         });
     });
     // JavaScript
+    // JavaScript
     document.addEventListener('DOMContentLoaded', function() {
         const smallImages = document.querySelectorAll('.small-image');
 
         smallImages.forEach(function(image) {
-            image.addEventListener('click', function() {
+            image.addEventListener('click', function(event) {
                 // Toggle between small and medium image sizes
                 if (image.classList.contains('medium-image')) {
                     image.classList.remove('medium-image');
@@ -211,9 +212,22 @@
                     image.setAttribute('height', '200px');
                     image.removeAttribute('width');
                 }
+                // Stop propagation to prevent the document click event
+                event.stopPropagation();
+            });
+        });
+
+        // Add a click event listener to the document body
+        document.body.addEventListener('click', function() {
+            // Loop through all small images and remove medium-image class
+            smallImages.forEach(function(image) {
+                image.classList.remove('medium-image');
+                image.setAttribute('height', '100px');
+                image.removeAttribute('width');
             });
         });
     });
+
 
     @if(Session::has('message'))
     toastr.options = {
