@@ -17,23 +17,53 @@ use App\Http\Controllers\Backend\StudentRegistrationController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// old
+// Route::get('/', function () {
+//     return view('frontend.pages.home');
+// })->name('home');
 
+// Route::get('/registrationform', function () {
+//     return view('frontend.pages.registrationform');
+// })->name('registration');
+// Route::get('/result', function () {
+//     return view('frontend.pages.result');
+// })->name('result');
+
+// Route::get('/contact', function () {
+//     return view('frontend.pages.contact');
+// })->name('contact');
+// --------------
+
+
+// new
 Route::get('/', function () {
-    return view('frontend.pages.home');
+    return view('frontend.pages.homeNew');
 })->name('home');
 
 Route::get('/registrationform', function () {
     return view('frontend.pages.registrationform');
 })->name('registration');
 Route::get('/result', function () {
-    return view('frontend.pages.result');
+    return view('frontend.pages.resultNew');
 })->name('result');
 
 Route::get('/contact', function () {
-    return view('frontend.pages.contact');
+    return view('frontend.pages.contactNew');
 })->name('contact');
 
 
+
+
+
+
+
+
+
+
+
+
+
+// --------------------------------------
 Route::resource('student-registrations', StudentRegistrationController::class);
 Route::get('/dashboard', function () {
     return view('backend.pages.index');
