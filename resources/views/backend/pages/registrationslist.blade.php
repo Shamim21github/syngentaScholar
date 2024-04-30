@@ -1,4 +1,41 @@
 @extends('backend.layouts.app')
+<style>
+    /* CSS */
+    .show-more-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .show-more-button:hover {
+        background-color: #0056b3;
+    }
+
+    /* CSS */
+    .show-more-button2 {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .show-more-button2:hover {
+        background-color: #0056b3;
+    }
+
+    /* CSS */
+    .medium-image {
+        height: 200px;
+        width: auto;
+        cursor: pointer;
+        /* Add cursor pointer when image is clickable */
+    }
+</style>
 @section('content')
 <h1>Dashboard</h1>
 <nav>
@@ -13,9 +50,8 @@
     <thead>
         <tr>
             <th>SL</th>
-            <th>
-                Application's Name
-            </th>
+            <th>Registration Number</th>
+            <th> Application's Name </th>
             <th>Name of the Institution</th>
             <th>Department/Faculty</th>
             <th>Roll No</th>
@@ -41,6 +77,7 @@
         @foreach($registration_lists as $registration_list)
         <tr>
             <td>{{$loop->iteration}}</td>
+            <td>{{$registration_list->registration_id}}</td>
             <td>{{$registration_list->application_name}}</td>
             <td>{{$registration_list->institution_name}}</td>
             <td>{{$registration_list->department}}</td>
@@ -53,11 +90,34 @@
             <td>{{$registration_list->email}}</td>
             <td>{{$registration_list->mailing_address}}</td>
             <td>{{$registration_list->bkash_number}}</td>
-            <td>{{$registration_list->syngenta_knowledge}}</td>
-            <td>{{$registration_list->career_ambition}}</td>
-            <td>
-                <img src="{{asset('storage/'.$registration_list->applicant_photo)}}" alt="" height="100px" width="100px">
+            <!-- HTML -->
+            <td id="syngenta-knowledge">
+                <!-- Initially show limited words -->
+                {{ Illuminate\Support\Str::limit($registration_list->syngenta_knowledge, $limit = 50, $end = '...') }}
+                <!-- Hidden span to hold full text -->
+                <span class="full-text" style="display: none;">
+                    {{ $registration_list->syngenta_knowledge }}
+                </span>
+                <!-- Button to show more/less text -->
+                <button class="show-more-button">More</button>
             </td>
+
+            <!-- HTML -->
+            <td id="career-ambition">
+                <!-- Initially show limited words -->
+                {{ Illuminate\Support\Str::limit($registration_list->career_ambition, $limit = 50, $end = '...') }}
+                <!-- Hidden span to hold full text -->
+                <span class="full-text2" style="display: none;">
+                    {{ $registration_list->career_ambition }}
+                </span>
+                <!-- Button to show more/less text -->
+                <button class="show-more-button2">More</button>
+            </td>
+
+            <td>
+                <img class="small-image" src="{{ asset('storage/'.$registration_list->applicant_photo) }}" alt="" height="100px" width="100px">
+            </td>
+
             <td>
                 <img src="{{asset('storage/'.$registration_list->student_id)}}" alt="" height="100px" width="100px">
             </td>
@@ -102,6 +162,59 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const showMoreButton = document.querySelector('.show-more-button');
+        const fullText = document.querySelector('.full-text');
+
+        showMoreButton.addEventListener('click', function() {
+            if (showMoreButton.textContent === 'More') {
+                // Show full text
+                fullText.style.display = 'inline';
+                showMoreButton.textContent = 'Less';
+            } else {
+                // Show limited text
+                fullText.style.display = 'none';
+                showMoreButton.textContent = 'More';
+            }
+        });
+    });
+    // JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
+        const showMoreButton = document.querySelector('.show-more-button2');
+        const fullText = document.querySelector('.full-text2');
+
+        showMoreButton.addEventListener('click', function() {
+            if (showMoreButton.textContent === 'More') {
+                // Show full text
+                fullText.style.display = 'inline';
+                showMoreButton.textContent = 'Less';
+            } else {
+                // Show limited text
+                fullText.style.display = 'none';
+                showMoreButton.textContent = 'More';
+            }
+        });
+    });
+    // JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
+        const smallImages = document.querySelectorAll('.small-image');
+
+        smallImages.forEach(function(image) {
+            image.addEventListener('click', function() {
+                // Toggle between small and medium image sizes
+                if (image.classList.contains('medium-image')) {
+                    image.classList.remove('medium-image');
+                    image.setAttribute('height', '100px');
+                    image.removeAttribute('width');
+                } else {
+                    image.classList.add('medium-image');
+                    image.setAttribute('height', '200px');
+                    image.removeAttribute('width');
+                }
+            });
+        });
+    });
+
     @if(Session::has('message'))
     toastr.options = {
         "closeButton": true,

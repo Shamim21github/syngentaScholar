@@ -124,12 +124,15 @@ class StudentRegistrationController extends Controller
             // Save the relative path of the image in the database
             $validatedData['academic_performance_5th_for_7th'] = $imagePath;
         }
+        // Generate a serial number
+        $serialNumber = Registration::count() + 1;
         // Create a new instance of YourModel
         $model = new Registration();
 
         // Fill the instance with the validated data
         $model->fill($validatedData);
-
+        // Assign the serial number
+        $model->registration_id = $serialNumber;
         // Save the record
         $model->save();
         // Send email to the applicant
