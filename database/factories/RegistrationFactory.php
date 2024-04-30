@@ -14,7 +14,9 @@ class RegistrationFactory extends Factory
      */
     public function definition(): array
     {
+        static $serialNumber = 1;
         return [
+            'registration_id' =>  $serialNumber++,
             'application_name' => $this->faker->sentence,
             'institution_name' => $this->faker->company,
             'department' => $this->faker->jobTitle,

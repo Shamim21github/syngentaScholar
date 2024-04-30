@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
+            $table->string('registration_id')->nullable();
             $table->string('application_name')->nullable();
             $table->string('institution_name')->nullable();
             $table->string('department')->nullable();
