@@ -13,7 +13,7 @@
     <p>Your application has been accepted. Congratulations!</p>
 
     <p>Best regards,<br>
-        Your Company Name</p>
+        SyngentaBangladesh</p>
 </body>
 
 </html>
